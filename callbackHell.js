@@ -11,11 +11,8 @@ TEXT_PATHS = [
 OUTPUT_PATH = "output/output.txt";
 
 function callbackHell() {
-  const proustPath = getAbsolutePath(TEXT_PATHS[0]);
-  const melvillePath = getAbsolutePath(TEXT_PATHS[1]);
-  const joycePath = getAbsolutePath(TEXT_PATHS[2]);
-  const absOutputPath = getAbsolutePath(OUTPUT_PATH);
-  debugger;
+
+  const [proustPath, melvillePath, joycePath, absOutputPath] = bundlePaths(TEXT_PATHS, OUTPUT_PATH)
 
   let proustData;
   let melvilleData;
@@ -46,6 +43,15 @@ function callbackHell() {
       });
     });
   });
+}
+
+function bundlePaths(textPaths, outputPath){
+  const proustPath = getAbsolutePath(textPaths[0]);
+  const melvillePath = getAbsolutePath(textPaths[1]);
+  const joycePath = getAbsolutePath(textPaths[2]);
+  const absOutputPath = getAbsolutePath(outputPath);
+
+  return [proustPath, melvillePath, joycePath, absOutputPath]
 }
 
 function getAbsolutePath(relativePath) {
